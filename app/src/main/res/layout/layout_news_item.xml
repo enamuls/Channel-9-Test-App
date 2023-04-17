@@ -21,7 +21,6 @@
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
             android:contentDescription="@string/news_image"
-            android:visibility="@{news.isThumbnailUrlAvailable}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +47,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
-            android:maxLines="3"
+            android:maxLines="2"
             android:text="@{news.theAbstract}"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +62,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{news.byLine}"
             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
             android:textStyle="italic"
