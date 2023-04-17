@@ -1,9 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
+        coreTestingVersion = '2.2.0'
+        coroutineVersion = '1.6.4'
         glideVersion = '4.15.1'
         gsonVersion = '2.9.0'
         koinVersion = '3.4.0'
+        mockitoVersion = '5.3.0'
         navVersion = '2.5.3'
         retrofitVersion = '2.9.0'
     }

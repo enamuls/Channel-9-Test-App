@@ -47,6 +47,12 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
+    // Core testing
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+
+    // Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+
     // Glide for loading image
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 
@@ -60,6 +66,9 @@ dependencies {
 
     // Koin for dependency injection
     implementation "io.insert-koin:koin-android:$koinVersion"
+
+    // Mockito for testing
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
 
     // Retrofit for HTTP requests
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
