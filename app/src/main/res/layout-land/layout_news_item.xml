@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="news"
-            type="com.channel9.testapp.model.News" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,8 +14,6 @@
 
         <ImageView
             android:id="@+id/thumbnail_image_view"
-            setImageFromUrl="@{news.thumbnailUrl}"
-            setViewVisibility="@{news.thumbnailUrlAvailable}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
@@ -32,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{news.headline}"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thumbnail_image_view"
@@ -46,7 +40,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:text="@{news.theAbstract}"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thumbnail_image_view"
@@ -60,7 +53,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="@{news.byLine}"
             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
