@@ -9,5 +9,5 @@ data class News(
     val thumbnailUrl: String?,
     val timeStamp: Long
 ) {
-    val isThumbnailUrlAvailable = thumbnailUrl.isNullOrEmpty().not()
+    val isThumbnailUrlAvailable: Boolean = thumbnailUrl.isNullOrEmpty().not()
 }

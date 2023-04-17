@@ -17,6 +17,8 @@
 
         <ImageView
             android:id="@+id/thumbnail_image_view"
+            setImageFromUrl="@{news.thumbnailUrl}"
+            setViewVisibility="@{news.thumbnailUrlAvailable}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
