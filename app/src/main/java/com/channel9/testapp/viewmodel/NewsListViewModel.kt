@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.channel9.testapp.model.News
-import com.channel9.testapp.service.NewsService
+import com.channel9.testapp.service.repository.NewsRepository
 import kotlinx.coroutines.launch
 
 class NewsListViewModel(
-    private val service: NewsService
+    private val repository: NewsRepository
 ) : ViewModel() {
 
     private val _newsList: MutableLiveData<State> = MutableLiveData()
@@ -23,7 +23,7 @@ class NewsListViewModel(
         _newsList.value = State.Loading
 
         viewModelScope.launch {
-            service.getNewsList().let { result ->
+            repository.getNewsList().let { result ->
                 _newsList.value = if (result.isSuccess) {
                     result.getOrNull()?.let { list ->
                         if (list.isEmpty()) {
