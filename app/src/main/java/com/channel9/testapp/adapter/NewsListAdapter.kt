@@ -1,27 +1,23 @@
 package com.channel9.testapp.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.channel9.testapp.databinding.LayoutNewsItemBinding
 import com.channel9.testapp.model.News
+import com.channel9.testapp.view.NewsItemView
 
 class NewsListAdapter : ListAdapter<News, NewsListAdapter.NewsListViewHolder>(NewsDiffCallBack()) {
     class NewsListViewHolder(
-        private val binding: LayoutNewsItemBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+        private val newsItemView: NewsItemView
+    ) : RecyclerView.ViewHolder(newsItemView) {
         fun bind(news: News) {
-            binding.news = news
-            binding.executePendingBindings()
+            newsItemView.setData(news)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsListViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = LayoutNewsItemBinding.inflate(inflater, parent, false)
-        return NewsListViewHolder(binding)
+        return NewsListViewHolder(NewsItemView(parent.context))
     }
 
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {
