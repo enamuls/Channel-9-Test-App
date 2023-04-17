@@ -3,12 +3,16 @@ package com.channel9.testapp.service
 import com.channel9.testapp.model.News
 import com.channel9.testapp.service.mapper.NewsMapper
 
-class NewsService(
+interface NewsService {
+    suspend fun getNewsList(): Result<List<News>>
+}
+
+class NewsServiceImpl(
     private val newsApi: NewsApi
-) {
+) : NewsService {
     private val newsMapper = NewsMapper()
 
-    suspend fun getNewsList(): Result<List<News>> {
+    override suspend fun getNewsList(): Result<List<News>> {
         val response = newsApi.getNewsList()
 
         return try {

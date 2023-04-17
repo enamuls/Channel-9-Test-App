@@ -3,6 +3,7 @@ package com.channel9.testapp
 import android.app.Application
 import com.channel9.testapp.service.NewsApi
 import com.channel9.testapp.service.NewsService
+import com.channel9.testapp.service.NewsServiceImpl
 import com.channel9.testapp.viewmodel.NewsListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -35,7 +36,7 @@ val appModule = module {
     }
     single<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
 
-    single { NewsService(get()) }
+    single<NewsService> { NewsServiceImpl(get()) }
 
     single { NewsListViewModel(get()) }
 }
