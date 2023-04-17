@@ -6,6 +6,6 @@ data class News(
     val headline: String,
     val theAbstract: String,
     val byLine: String,
-    val thumbnailUrl: String,
+    val thumbnailUrl: String?,
     val timeStamp: Long
 )
