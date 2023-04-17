@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,13 +43,16 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // GSON
+    // Glide for loading image
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // GSON for API response mapping
     implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
 
-    // Koin
+    // Koin for dependency injection
     implementation "io.insert-koin:koin-android:$koinVersion"
 
-    // Retrofit
+    // Retrofit for HTTP requests
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 
     testImplementation 'junit:junit:4.13.2'
