@@ -4,6 +4,11 @@ import com.channel9.testapp.model.News
 import com.channel9.testapp.service.mapper.NewsMapper
 
 interface NewsService {
+
+    /**
+     * Returns a list of [News] fetched from the API
+     * @return list of [News]
+     */
     suspend fun getNewsList(): Result<List<News>>
 }
 
