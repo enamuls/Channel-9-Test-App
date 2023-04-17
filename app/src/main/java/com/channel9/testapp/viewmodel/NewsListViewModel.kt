@@ -1,19 +1,19 @@
 package com.channel9.testapp.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.channel9.testapp.model.News
 import com.channel9.testapp.service.repository.NewsRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class NewsListViewModel(
     private val repository: NewsRepository
 ) : ViewModel() {
 
-    private val _newsList: MutableLiveData<State> = MutableLiveData()
-    val newsList: LiveData<State> = _newsList
+    private val _newsList: MutableStateFlow<State> = MutableStateFlow(State.Loading)
+    val newsList: StateFlow<State> = _newsList
 
     init {
         getNewsList()
