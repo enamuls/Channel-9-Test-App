@@ -1,11 +1,15 @@
 package com.channel9.testapp
 
 import android.app.Application
+import com.channel9.testapp.service.NewsApi
+import com.channel9.testapp.service.NewsService
+import com.channel9.testapp.viewmodel.NewsListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainApplication : Application() {
 
@@ -23,9 +27,15 @@ class MainApplication : Application() {
 }
 
 val appModule = module {
-    single {
+    single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl("https://bruce-v2-mob.fairfaxmedia.com.au/1/coding_test/13ZZQX/full")
+            .baseUrl("https://bruce-v2-mob.fairfaxmedia.com.au/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    single<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
+
+    single { NewsService(get()) }
+
+    single { NewsListViewModel(get()) }
 }
