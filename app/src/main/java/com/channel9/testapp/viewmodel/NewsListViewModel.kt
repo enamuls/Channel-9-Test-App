@@ -12,22 +12,42 @@ class NewsListViewModel(
     private val service: NewsService
 ) : ViewModel() {
 
-    private val _newsList: MutableLiveData<List<News>> = MutableLiveData()
-    val newsList: LiveData<List<News>> = _newsList
+    private val _newsList: MutableLiveData<State> = MutableLiveData()
+    val newsList: LiveData<State> = _newsList
 
     init {
         getNewsList()
     }
 
     private fun getNewsList() {
+        _newsList.value = State.Loading
+
         viewModelScope.launch {
             service.getNewsList().let { result ->
-                if (result.isSuccess) {
+                _newsList.value = if (result.isSuccess) {
                     result.getOrNull()?.let { list ->
-                        _newsList.value= list.sortedBy { it.timeStamp }
+                        if (list.isEmpty()) {
+                            State.Empty
+                        } else {
+                            State.Success(list.sortedBy { it.timeStamp })
+                        }
+                    } ?: run {
+                        State.Empty
                     }
+                } else {
+                    State.Failure(result.exceptionOrNull())
                 }
             }
         }
     }
+}
+
+/**
+ * UI States during data fetch from API
+ */
+sealed class State {
+    object Loading : State()
+    data class Success(val data: List<News>) : State()
+    object Empty : State()
+    data class Failure(val throwable: Throwable?) : State()
 }
