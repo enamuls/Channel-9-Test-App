@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.channel9.testapp.R
 import com.channel9.testapp.databinding.LayoutNewsItemBinding
@@ -38,6 +39,12 @@ class NewsItemView(
             headlineTextView.text = news.headline
             theAbstractTextView.text = news.theAbstract
             byLineTextView.text = news.byLine
+
+            root.setOnClickListener {
+                val navController = Navigation.findNavController(this@NewsItemView)
+                val action = NewsListFragmentDirections.actionNewsListFragmentToFullNewsFragment(news.url)
+                navController.navigate(action)
+            }
         }
     }
 
