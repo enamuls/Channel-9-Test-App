@@ -4,7 +4,14 @@ buildscript {
         glideVersion = '4.15.1'
         gsonVersion = '2.9.0'
         koinVersion = '3.4.0'
+        navVersion = '2.5.3'
         retrofitVersion = '2.9.0'
+    }
+    repositories {
+        google()
+    }
+    dependencies {
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
     }
 }
 

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -34,6 +35,9 @@ android {
     dataBinding {
         enabled = true
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -48,6 +52,11 @@ dependencies {
 
     // GSON for API response mapping
     implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
+
+    // Jetpack Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navVersion"
 
     // Koin for dependency injection
     implementation "io.insert-koin:koin-android:$koinVersion"
