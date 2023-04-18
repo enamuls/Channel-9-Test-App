@@ -1,6 +1,7 @@
-IDE: Android Studio Electric Eel | 2022.1.1 Patch 2
-Gradle JDK: JetBrains Runtime Version 11.0.15
-Kotlin: 1.8.0
+## Build tools
+* IDE: Android Studio Electric Eel | 2022.1.1 Patch 2
+* Gradle JDK: JetBrains Runtime Version 11.0.15
+* Kotlin: 1.8.0
 
 ## Architecture
 * MVVM is used
