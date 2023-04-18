@@ -3,6 +3,9 @@ package com.channel9.testapp.service.repository
 import com.channel9.testapp.model.News
 import com.channel9.testapp.service.NewsService
 
+/**
+ * Repository class for better testing
+ */
 interface NewsRepository {
     suspend fun getNewsList(): Result<List<News>>
 }

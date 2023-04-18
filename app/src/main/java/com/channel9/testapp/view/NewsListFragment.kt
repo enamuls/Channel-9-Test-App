@@ -14,6 +14,9 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+/**
+ * Shows a list of news
+ */
 class NewsListFragment : Fragment(), KoinComponent {
 
     private val viewModel: NewsListViewModel by inject()

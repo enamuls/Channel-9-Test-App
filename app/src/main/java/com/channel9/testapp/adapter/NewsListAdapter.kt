@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.channel9.testapp.model.News
 import com.channel9.testapp.view.NewsItemView
 
+/**
+ * Adapter to load a list of [News] inside a RecyclerView in NewsListFragment
+ */
 class NewsListAdapter : ListAdapter<News, NewsListAdapter.NewsListViewHolder>(NewsDiffCallBack()) {
 
     class NewsListViewHolder(

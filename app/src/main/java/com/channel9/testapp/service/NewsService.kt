@@ -3,6 +3,9 @@ package com.channel9.testapp.service
 import com.channel9.testapp.model.News
 import com.channel9.testapp.service.mapper.NewsMapper
 
+/**
+ * Service class where API network requests are made and response mapped
+ */
 interface NewsService {
 
     /**

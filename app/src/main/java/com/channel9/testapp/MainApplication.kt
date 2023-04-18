@@ -15,6 +15,9 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Main application class to start Koin as dependency injection
+ */
 class MainApplication : Application() {
 
     override fun onCreate() {
@@ -40,9 +43,12 @@ val appModule = module {
 
     single<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
 
+    // Services
     single<NewsService> { NewsServiceImpl(get()) }
 
+    // Repositories
     single<NewsRepository> { NewsRepositoryImpl(get()) }
 
+    // ViewModels
     viewModel { NewsListViewModel(get()) }
 }

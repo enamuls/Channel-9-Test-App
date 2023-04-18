@@ -4,6 +4,9 @@ import com.channel9.testapp.model.News
 import com.channel9.testapp.service.model.NewsListResponse
 import com.channel9.testapp.service.model.NewsRelatedImageResponse
 
+/**
+ * Mapper class to map [NewsListResponse] from API request to [News]
+ */
 class NewsMapper {
 
     /**
@@ -25,7 +28,9 @@ class NewsMapper {
         }
 
     /**
-     * Return a small image that is of the type "thumbnail"
+     * Return a small image that is of the type "thumbnail". As we don't care about the rest of the
+     * types, I haven't bothered to create an Enum for it. Otherwise, an Enum should be used instead
+     * of plain string.
      * @return [NewsRelatedImageResponse.url] of the "thumbnail" if exists
      */
     private fun List<NewsRelatedImageResponse>.getThumbnailUrl(): String? =

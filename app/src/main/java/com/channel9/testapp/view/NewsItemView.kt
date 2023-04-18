@@ -13,6 +13,9 @@ import com.channel9.testapp.R
 import com.channel9.testapp.databinding.LayoutNewsItemBinding
 import com.channel9.testapp.model.News
 
+/**
+ * Custom view that shows a news item in a news list.
+ */
 class NewsItemView(
     context: Context,
     attrs: AttributeSet? = null
@@ -47,12 +50,20 @@ class NewsItemView(
         }
     }
 
+    /**
+     * Navigate to [FullNewsFragment]
+     */
     private fun navigateToFullNews(url: String) {
         val navController = Navigation.findNavController(this)
         val action = NewsListFragmentDirections.actionNewsListFragmentToFullNewsFragment(url)
         navController.navigate(action)
     }
 
+    /**
+     * Load an image using Glide. Images are cached by default strategy. Images are centerCropped
+     * for better scaling. If we decide to change the image size in future from square to rectangle,
+     * we may want to remove centerCropped.
+     */
     private fun ImageView.loadThumbnail(url: String) {
         Glide.with(this)
             .load(url)

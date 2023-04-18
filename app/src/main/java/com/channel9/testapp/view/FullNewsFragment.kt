@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.channel9.testapp.databinding.FragmentFullNewsBinding
 
+/**
+ * Shows a full news in a webView. Receives a URL as argument.
+ */
 class FullNewsFragment : Fragment() {
 
     private val args: FullNewsFragmentArgs by navArgs()
@@ -33,9 +36,10 @@ class FullNewsFragment : Fragment() {
                 domStorageEnabled = true
                 loadsImagesAutomatically = true
             }
+
             // Enforce secure https
-            val newUrl = args.url.replace("http://", "https://")
-            loadUrl(newUrl)
+            val secureUrl = args.url.replace("http://", "https://")
+            loadUrl(secureUrl)
         }
     }
 

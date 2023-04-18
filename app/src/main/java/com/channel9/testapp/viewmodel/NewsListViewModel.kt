@@ -8,17 +8,39 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * Responsible for NewsListFragment. Fetches a list of news then updates it's listeners
+ */
 class NewsListViewModel(
     private val repository: NewsRepository
 ) : ViewModel() {
 
+    /**
+     * Local flow that can be modified. Initial state is [State.Loading]
+     */
     private val _newsList: MutableStateFlow<State> = MutableStateFlow(State.Loading)
+
+    /**
+     * Public flow that can be listened to
+     */
     val newsList: StateFlow<State> = _newsList
 
+    /**
+     * On viewModel init fetch list of News
+     */
     init {
         getNewsList()
     }
 
+    /**
+     * Fetch a list of news from the API then update UI state accordingly.
+     * Initially
+     *  [State.Loading] is set
+     * Based on then response
+     *  [State.Empty] is set if no news returned
+     *  [State.Success] is set with a list of news
+     *  [State.Failure] is set if any error occurred during network request
+     */
     private fun getNewsList() {
         viewModelScope.launch {
             _newsList.value = State.Loading
@@ -48,7 +70,7 @@ class NewsListViewModel(
 }
 
 /**
- * UI States during data fetching from API
+ * UI States for NewsListFragment
  */
 sealed class State {
     object Loading : State()
