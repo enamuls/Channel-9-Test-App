@@ -68,6 +68,9 @@ class NewsListViewModelTest {
         Dispatchers.resetMain()
     }
 
+    /**
+     * Tests [State.Success] with one [News] in the list
+     */
     @Test
     fun test_getNewsList_isSuccessfulWithOneNews() = runTest {
         sut = NewsListViewModel(mockRepositoryWithOneNews)
@@ -75,6 +78,9 @@ class NewsListViewModelTest {
         assertEquals(State.Success(mockNewsList1), sut.newsList.first())
     }
 
+    /**
+     * Tests [State.Empty] with no [News] in the list
+     */
     @Test
     fun test_getNewsList_isSuccessfulWithNoNews() = runTest {
         sut = NewsListViewModel(mockRepositoryWithNoNews)
@@ -82,6 +88,9 @@ class NewsListViewModelTest {
         assertEquals(State.Empty, sut.newsList.first())
     }
 
+    /**
+     * Tests [State.Failure] with a [Throwable]
+     */
     @Test
     fun test_getNewsList_isFailure() = runTest {
         sut = NewsListViewModel(mockRepositoryWithFailure)
@@ -89,6 +98,9 @@ class NewsListViewModelTest {
         assertEquals(State.Failure(mockThrowable), sut.newsList.first())
     }
 
+    /**
+     * Tests [State.Success] with a list of two [News]
+     */
     @Test
     fun test_getNewsList_hasTwoNews_sortedSuccessfully() = runTest {
         sut = NewsListViewModel(mockRepositoryWithTwoNews)

@@ -75,6 +75,9 @@ class NewsListFragmentTest : KoinTest {
         job.cancel()
     }
 
+    /**
+     * Tests correct list is visible on the screen with correct data
+     */
     @Test
     fun test_newsListHasCorrectNewsItems() = runBlocking {
         job = launch {
@@ -107,6 +110,9 @@ class NewsListFragmentTest : KoinTest {
         }
     }
 
+    /**
+     * Tests onClick behaviour on a [News] item navigates to FullNewsFragment
+     */
     @Test
     fun test_onNewsItemClick_navigateToFullNews() = runBlocking {
         job = launch {

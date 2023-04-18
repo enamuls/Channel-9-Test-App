@@ -43,6 +43,9 @@ class NewsRepositoryTest {
         }
     }
 
+    /**
+     * Tests [Result.success] returns correct list with one [News]
+     */
     @Test
     fun getNewsList_hasOneNews_returnsListOfOneNews() = runTest {
         sut = NewsRepositoryImpl(mockServiceWithData)
@@ -53,6 +56,9 @@ class NewsRepositoryTest {
         assertEquals(expected, actual.getOrNull())
     }
 
+    /**
+     * Tests [Result.success] returns correct list with no [News]
+     */
     @Test
     fun getNewsList_hasNoNews_returnsEmptyListOfNews() = runTest {
         sut = NewsRepositoryImpl(mockServiceWithNoData)
@@ -63,6 +69,9 @@ class NewsRepositoryTest {
         assertEquals(expected, actual.getOrNull())
     }
 
+    /**
+     * Tests [Result.failure] returns a [Throwable]
+     */
     @Test
     fun getNewsList_hasFailedToGetNews_returnsThrowable() = runTest {
         sut = NewsRepositoryImpl(mockServiceWithFailure)

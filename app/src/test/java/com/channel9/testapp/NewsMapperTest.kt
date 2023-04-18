@@ -49,6 +49,9 @@ class NewsMapperTest {
         sut = NewsMapper()
     }
 
+    /**
+     * Tests mapper maps one [News] correctly
+     */
     @Test
     fun test_mapResponseToNewsList_responseHasOneNews_returnsListOfOneNews() {
         val expected = listOf(mockNews1)
@@ -57,6 +60,9 @@ class NewsMapperTest {
         assertEquals(expected, actual)
     }
 
+    /**
+     * Tests mapper maps an empty list correctly
+     */
     @Test
     fun test_mapResponseToNewsList_responseHasNoNews_returnsEmptyListOfNews() {
         val expected = emptyList<News>()
