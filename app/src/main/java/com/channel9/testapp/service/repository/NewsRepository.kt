@@ -10,7 +10,5 @@ interface NewsRepository {
 class NewsRepositoryImpl(
     private val service: NewsService
 ) : NewsRepository {
-    override suspend fun getNewsList(): Result<List<News>> {
-        return service.getNewsList()
-    }
+    override suspend fun getNewsList(): Result<List<News>> = service.getNewsList()
 }

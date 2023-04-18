@@ -17,7 +17,6 @@ import org.koin.core.component.inject
 class NewsListFragment : Fragment(), KoinComponent {
 
     private val viewModel: NewsListViewModel by inject()
-
     private lateinit var binding: FragmentNewsListBinding
 
     override fun onCreateView(
@@ -34,17 +33,15 @@ class NewsListFragment : Fragment(), KoinComponent {
 
         val newsListAdapter = NewsListAdapter()
 
-        binding.newsListRecyclerView.apply {
-            adapter = newsListAdapter
-        }
+        binding.newsListRecyclerView.adapter = newsListAdapter
 
         lifecycleScope.launch {
             viewModel.newsList.collect { state ->
                 when (state) {
-                    is State.Loading -> Unit
-                    is State.Empty -> Unit
+                    is State.Loading -> Unit // TODO: Show a loading state
+                    is State.Empty -> Unit // TODO: Show a message for empty state
                     is State.Success -> newsListAdapter.submitList(state.data)
-                    is State.Failure -> Unit
+                    is State.Failure -> Unit // TODO: Show a message for failure state
                 }
             }
         }

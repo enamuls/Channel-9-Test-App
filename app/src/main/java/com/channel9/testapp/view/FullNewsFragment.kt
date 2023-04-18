@@ -1,5 +1,6 @@
 package com.channel9.testapp.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +11,8 @@ import com.channel9.testapp.databinding.FragmentFullNewsBinding
 
 class FullNewsFragment : Fragment() {
 
-    private lateinit var binding: FragmentFullNewsBinding
-
     private val args: FullNewsFragmentArgs by navArgs()
+    private lateinit var binding: FragmentFullNewsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +23,7 @@ class FullNewsFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -34,7 +35,7 @@ class FullNewsFragment : Fragment() {
             }
             // Enforce secure https
             val newUrl = args.url.replace("http://", "https://")
-            binding.webView.loadUrl(newUrl)
+            loadUrl(newUrl)
         }
     }
 

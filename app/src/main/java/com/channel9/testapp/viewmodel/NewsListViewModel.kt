@@ -20,19 +20,17 @@ class NewsListViewModel(
     }
 
     private fun getNewsList() {
-        _newsList.value = State.Loading
-
         viewModelScope.launch {
+            _newsList.value = State.Loading
+
             repository.getNewsList().let { result ->
                 _newsList.value = if (result.isSuccess) {
-                    result.getOrNull()?.let { list ->
-                        if (list.isEmpty()) {
-                            State.Empty
-                        } else {
-                            State.Success(list.sortedBy { it.timeStamp })
-                        }
-                    } ?: run {
+                    val newsList = result.getOrNull()
+
+                    if (newsList.isNullOrEmpty()) {
                         State.Empty
+                    } else {
+                        State.Success(newsList.sortByTimeStamp())
                     }
                 } else {
                     State.Failure(result.exceptionOrNull())
@@ -40,10 +38,13 @@ class NewsListViewModel(
             }
         }
     }
+
+    private fun List<News>.sortByTimeStamp() =
+        sortedBy { it.timeStamp }
 }
 
 /**
- * UI States during data fetch from API
+ * UI States during data fetching from API
  */
 sealed class State {
     object Loading : State()

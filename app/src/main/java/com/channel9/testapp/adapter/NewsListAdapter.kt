@@ -8,6 +8,7 @@ import com.channel9.testapp.model.News
 import com.channel9.testapp.view.NewsItemView
 
 class NewsListAdapter : ListAdapter<News, NewsListAdapter.NewsListViewHolder>(NewsDiffCallBack()) {
+
     class NewsListViewHolder(
         private val newsItemView: NewsItemView
     ) : RecyclerView.ViewHolder(newsItemView) {
@@ -16,9 +17,8 @@ class NewsListAdapter : ListAdapter<News, NewsListAdapter.NewsListViewHolder>(Ne
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsListViewHolder {
-        return NewsListViewHolder(NewsItemView(parent.context))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsListViewHolder =
+        NewsListViewHolder(NewsItemView(parent.context))
 
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {
         val news = getItem(position)
@@ -26,12 +26,9 @@ class NewsListAdapter : ListAdapter<News, NewsListAdapter.NewsListViewHolder>(Ne
     }
 
     private class NewsDiffCallBack : DiffUtil.ItemCallback<News>() {
-        override fun areItemsTheSame(oldItem: News, newItem: News): Boolean {
-            return oldItem.id == newItem.id
-        }
+        override fun areItemsTheSame(oldItem: News, newItem: News): Boolean =
+            oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: News, newItem: News): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(oldItem: News, newItem: News): Boolean = oldItem == newItem
     }
 }

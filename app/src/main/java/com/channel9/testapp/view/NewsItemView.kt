@@ -36,16 +36,21 @@ class NewsItemView(
             } else {
                 thumbnailImageView.visibility = View.GONE
             }
+
             headlineTextView.text = news.headline
             theAbstractTextView.text = news.theAbstract
             byLineTextView.text = news.byLine
 
             root.setOnClickListener {
-                val navController = Navigation.findNavController(this@NewsItemView)
-                val action = NewsListFragmentDirections.actionNewsListFragmentToFullNewsFragment(news.url)
-                navController.navigate(action)
+                navigateToFullNews(news.url)
             }
         }
+    }
+
+    private fun navigateToFullNews(url: String) {
+        val navController = Navigation.findNavController(this)
+        val action = NewsListFragmentDirections.actionNewsListFragmentToFullNewsFragment(url)
+        navController.navigate(action)
     }
 
     private fun ImageView.loadThumbnail(url: String) {
