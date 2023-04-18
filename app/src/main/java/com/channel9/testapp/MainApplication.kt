@@ -36,7 +36,7 @@ val appModule = module {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    
+
     single<NewsApi> { get<Retrofit>().create(NewsApi::class.java) }
 
     single<NewsService> { NewsServiceImpl(get()) }
