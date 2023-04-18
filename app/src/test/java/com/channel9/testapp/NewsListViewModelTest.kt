@@ -40,7 +40,7 @@ class NewsListViewModelTest {
         timeStamp = 987654321
     )
     private val mockNewsList1 = listOf(mockNews1)
-    private val mockNewsList2 = listOf(mockNews2, mockNews1)
+    private val mockNewsList2 = listOf(mockNews1, mockNews2)
     private val mockThrowable = Throwable("some error")
     private val mockRepositoryWithOneNews = object : NewsRepository {
         override suspend fun getNewsList(): Result<List<News>> = Result.success(mockNewsList1)
@@ -93,6 +93,6 @@ class NewsListViewModelTest {
     fun test_getNewsList_hasTwoNews_sortedSuccessfully() = runTest {
         sut = NewsListViewModel(mockRepositoryWithTwoNews)
 
-        assertEquals(State.Success(listOf(mockNews1, mockNews2)), sut.newsList.first())
+        assertEquals(State.Success(listOf(mockNews2, mockNews1)), sut.newsList.first())
     }
 }

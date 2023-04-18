@@ -39,8 +39,12 @@ class NewsListViewModel(
         }
     }
 
+    /**
+     * Sort the news by timeStamp in descending order so the latest is on the top
+     * @return list of [News]
+     */
     private fun List<News>.sortByTimeStamp() =
-        sortedBy { it.timeStamp }
+        sortedByDescending { it.timeStamp }
 }
 
 /**
