@@ -1,11 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
+        androidXFragmentTestVersion = '1.5.6'
+        androidXTestVersion = '1.5.0'
+        appCompatVersion = '1.6.1'
+        constraintLayoutVersion = '2.1.4'
         coreTestingVersion = '2.2.0'
+        coreVersion = '1.10.0'
         coroutineVersion = '1.6.4'
+        espressoVersion = '3.5.1'
         glideVersion = '4.15.1'
         gsonVersion = '2.9.0'
+        jUnitExtVersion = '1.1.5'
+        jUnitVersion = '4.13.2'
         koinVersion = '3.4.0'
+        materialVersion = '1.8.0'
         mockitoVersion = '5.3.0'
         navVersion = '2.5.3'
         retrofitVersion = '2.9.0'

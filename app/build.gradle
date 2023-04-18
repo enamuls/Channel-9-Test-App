@@ -38,20 +38,37 @@ android {
     buildFeatures {
         viewBinding true
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // AndroidX
+    implementation "androidx.core:core-ktx:$coreVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    // AndroidX test libraries
+    debugImplementation "androidx.test:core-ktx:$androidXTestVersion"
+    debugImplementation "androidx.fragment:fragment-testing:$androidXFragmentTestVersion"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$jUnitExtVersion"
+    androidTestImplementation "androidx.test:runner:$androidXTestVersion"
+    androidTestImplementation "androidx.test:rules:$androidXTestVersion"
 
     // Core testing
     testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 
     // Coroutines
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
+
+    // Espresso for instrumented tests
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
 
     // Glide for loading image
     implementation "com.github.bumptech.glide:glide:$glideVersion"
@@ -64,16 +81,17 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
     androidTestImplementation "androidx.navigation:navigation-testing:$navVersion"
 
+    // JUnit
+    testImplementation "junit:junit:$jUnitVersion"
+
     // Koin for dependency injection
     implementation "io.insert-koin:koin-android:$koinVersion"
+    androidTestImplementation "io.insert-koin:koin-test:$koinVersion"
 
     // Mockito for testing
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
 
     // Retrofit for HTTP requests
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
